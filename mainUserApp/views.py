@@ -31,9 +31,6 @@ def get_computer_info():
         'OSVersion': platform.platform(),
         'IP_Address': socket.gethostbyname(socket.gethostname()),
         'Domain': socket.getfqdn().split('.', 1)[-1],
-        'Processor': platform.processor(),
-        'CPU_Cores': psutil.cpu_count(logical=False),
-        'Logical_Processors': psutil.cpu_count(logical=True),
     }
     return info
 
@@ -41,8 +38,6 @@ def get_user_info():
     user_info = {
         'UserName': os.getlogin(),
         'UserDomain': os.getenv('USERDOMAIN'),
-        'HomeDirectory': os.path.expanduser('~'),
-        'CurrentDirectory': os.getcwd(),
         'Hostname': socket.gethostname(),
         'FullUsername': f"{os.getenv('USERDOMAIN')}\\{os.getlogin()}",
         'LoggedInUser': getpass.getuser()
